@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container} from '../SignUp/styles';
+import {Container} from '../Search/styles';
 import {Text} from 'react-native';
 
 export default () => {

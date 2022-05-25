@@ -7,7 +7,7 @@ export default () => {
     return (
         <Container>
         <Text>Appointments</Text>
-        </Container>
+      </Container>
     );
-    }
+}
     

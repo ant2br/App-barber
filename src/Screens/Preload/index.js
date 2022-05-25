@@ -14,6 +14,7 @@ export default () => {
   useEffect(() => {
     const checkToken = async () => {
       const token = await AsyncStorage.getItem('@Barber:token');
+      //navigation.reset({routes: [{name: 'MainTab'}]});
 
       if (token) {
         const retorno = await Api.checkToken(token);

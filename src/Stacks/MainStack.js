@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Preload from '../Screens/Preload';
 import SignIn from '../Screens/SignIn';
 import SignUp from '../Screens/SignUp';
-import MainTab from './MainTab';
+import MainTab from '../Stacks/MainTab';
 
 const Stack = createStackNavigator();
 
