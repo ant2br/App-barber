@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { Text } from 'react-native';
 import {request, PERMISSIONS} from 'react-native-permissions';
 import {Platform, RefreshControl} from 'react-native';
@@ -7,7 +7,9 @@ import { Container, Scroller, HeaderArea, HeaderTitle, SearchButton,LocationArea
 import SearchIcon from '../../assets/search.svg';
 import MyLocationIcon from '../../assets/my_location.svg';
 import BarberItem from '../../Components/BarberItem';
+import { useNavigation } from '@react-navigation/native';
 function App() {
+  const navigation = useNavigation();
 
   const [location, setLocation] = useState('');
 
@@ -60,30 +62,40 @@ function App() {
 
     data.push({
       id: 1,
-      name: 'Barber 1',
+      name: 'Luiza',
       avatar: 'https://i.pravatar.cc/300?img=1',
       stars: 3.5
     },{
       id: 2,
-      name: 'Barber 1',
-      avatar: 'https://i.pravatar.cc/300?img=1',
-      stars: 3
+      name: 'Camila',
+      avatar: 'https://i.pravatar.cc/300?img=2',
+      stars: 4
     },{
       id: 3,
-      name: 'Barber 1',
-      avatar: 'https://i.pravatar.cc/300?img=1',
-      stars: 3
+      name: 'Roberto',
+      avatar: 'https://i.pravatar.cc/300?img=3',
+      stars: 2
     }
     ,{
       id: 4,
-      name: 'Barber 1',
-      avatar: 'https://i.pravatar.cc/300?img=1',
-      stars: 3
+      name: 'José',
+      avatar: 'https://i.pravatar.cc/300?img=4',
+      stars: 1.5
     });
     
     setList(data);
     console.log(data)
     setLoading(false);
+
+    
+  }
+
+  useEffect(()=>{
+    getBarbers()
+  },[])
+
+  const handleSearch = () => {
+    navigation.navigate('Search');
   }
   return(
     <Container>
@@ -93,7 +105,7 @@ function App() {
 
         <HeaderArea>
           <HeaderTitle numberOfLines={2}>Encontre o seu barbeiro favorito </HeaderTitle>
-          <SearchButton>
+          <SearchButton onPress={handleSearch}>
             <SearchIcon width="26" height="26" fill="#FFFFFF"/>
           </SearchButton>
         </HeaderArea>
